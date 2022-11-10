@@ -62,7 +62,7 @@ public class Main {
       //*** Depósito: 200              | *** Depósito: 150
       //*** Saque: 150                 | *** Saque: 150 
       transactionDeposit.join();
-      transactionLoot.join();
+      transactionLoot.join(); // Para simular o caso de erro, basta comentar essa linha
       System.out.println("Fazendo as transações");
     } catch (InterruptedException e) {
       System.out.println("Erro: Algo de errado ocorreu - transactionLoot");
