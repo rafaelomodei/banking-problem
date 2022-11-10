@@ -1,7 +1,12 @@
+/********************************************************/
+/*                                                      */
+/*                     Solução                          */
+/*                                                      */
+/********************************************************/
+
 import java.util.*;
 import java.text.*;
 
-//'Contador' é um objeto compartilhado pelas threads.
 class Account {
   protected int balance = 100;
 
@@ -50,6 +55,12 @@ public class Main {
     
     transactionLoot.start();
     try { // Aguarda as duas threads encerrarem para terminar a main
+
+      //Caso não aguar a threed finalizar, pode ocorrer o problema de retornar o saldo errado
+      //Exemplo de erro                     Exemplo de sucesso
+      //*** TRANSAÇÃO CONCLUIDA ***    | *** TRANSAÇÃO CONCLUIDA ***
+      //*** Depósito: 200              | *** Depósito: 150
+      //*** Saque: 150                 | *** Saque: 150 
       transactionDeposit.join();
       transactionLoot.join();
       System.out.println("Fazendo as transações");
